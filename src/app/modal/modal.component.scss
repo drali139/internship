@@ -1,0 +1,18 @@
+ion-card {
+  position: relative;
+  margin: 8px;
+
+  img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  ion-button[fill="clear"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    --padding-start: 4px;
+    --padding-end: 4px;
+  }
+}

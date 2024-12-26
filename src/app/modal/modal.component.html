@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Images</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-fab vertical="center" horizontal="center" *ngIf="selectedImages().length === 0">
+    <ion-fab-button (click)="presentActionSheet()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid *ngIf="selectedImages().length > 0">
+    <ion-row>
+      <ion-col size="4" *ngFor="let img of selectedImages(); let i = index">
+        <ion-card>
+          <img [src]="img.displayPath" alt="Selected image" />
+          <ion-button fill="clear" (click)="removeImage(i)">
+            <ion-icon name="close-circle" color="danger"></ion-icon>
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item *ngIf="selectedImages().length > 0">
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" *ngIf="selectedImages().length > 0" (click)="generateAndSharePDF()" class="ion-margin-top">
+    <ion-icon name="document" slot="start"></ion-icon>
+    Generate and Share PDF
+  </ion-button>
+</ion-content>

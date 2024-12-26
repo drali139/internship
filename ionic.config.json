@@ -1,0 +1,7 @@
+{
+  "name": "internship",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
